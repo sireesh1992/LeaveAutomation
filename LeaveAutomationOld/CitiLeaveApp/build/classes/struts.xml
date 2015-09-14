@@ -1,0 +1,60 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<!-- class AddShipperAction with id, shipper, phone. addshipper.jsp with shipper and phone textfields and 
+you need confirmshipper.jsp that should display a message like "Chennai shippers has been added with a phone no.
+" -->
+<struts>
+
+   	<package name="demo" namespace="/demo" extends="struts-default">
+   	
+		<action name="enter">
+			<result>pages/EnterDetails.jsp</result>
+		</action>
+		<action name="adminlogin">
+			<result>pages/adminlogin.jsp</result>
+		</action>
+		<action name="Sessionadmin" class="admin_classes.Session_admin">
+			<result name="success">pages/skip.jsp</result>
+			<result name="failed">pages/adminlogin.jsp</result>
+		</action>
+		<action name="admin" class="admin_classes.AdminApprove">
+			<result name="success">pages/admin.jsp</result>
+			<result name="failed">pages/adminlogin.jsp</result>
+		</action>
+		<action name="adminaddProcess" class="admin_classes.adminAddEmp">
+			<result name="success">pages/skip.jsp</result>
+		</action>
+		<action name="admindelProcess" class="admin_classes.adminDelEmp">
+			<result name="success">pages/skip.jsp</result>
+		</action>
+		<action name="Sessionvar" class="leave_app.Session_init">
+		<result name="success">pages/jump.jsp</result>
+		<result name="failure">pages/EnterDetails.jsp</result>
+		</action>
+		
+		<action name="input" class="leave_app.MyData">
+		<result name="success">pages/input.jsp</result>
+		<result name="successe">pages/inputemp.jsp</result>
+		<result name="failed">pages/failed.jsp</result>
+		</action>
+		
+		<action name="application" class="leave_app.disp">
+		<result name="success">pages/jump.jsp</result>
+		<result name="failed">pages/failed.jsp</result>
+		</action>
+	
+		<action name="updateLeaves" class="manager_classes.UpdateLeave">
+		<result name="success">pages/jump.jsp</result>
+		<result name="failure">pages/failed.jsp</result>
+		</action>
+		
+		
+		
+		<action name="appbehalf" class="manager_classes.onBehalf">
+		<result name="success">pages/jump.jsp</result>
+		<result name="failure">pages/failed.jsp</result>
+		</action>
+	</package>
+    
+</struts>

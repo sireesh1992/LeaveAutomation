@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.3//EN"
+        "http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
+<validators>
+
+	<!-- This is how you perform validation using field validators -->
+
+	<field name="startDate">
+		<field-validator type="requiredstring">
+			<message key="Required" />
+		</field-validator>
+
+		<field-validator type="regex">
+			<param name="regex">(0?[1-9]|[1][0-2])/(0?[1-9]|[1-2][0-9]|[3][0-1])/[0-9]{4}</param>
+			<message key="Date should be in format MM/DD/yyyy" />
+		</field-validator>
+
+	</field>
+	<field name="endDate">
+		<field-validator type="requiredstring">
+			<message key="Required" />
+		</field-validator>
+
+		<field-validator type="regex">
+			<param name="regex">(0?[1-9]|[1][0-2])/(0?[1-9]|[1-2][0-9]|[3][0-1])/[0-9]{4}</param>
+			<message key="Date should be in format MM/DD/yyyy" />
+		</field-validator>
+	</field>
+	<field name="noOfDays">
+		<field-validator type="int">
+			<message key="Required" />
+		</field-validator>
+	</field>
+
+
+
+
+</validators>
+
+

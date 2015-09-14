@@ -1,0 +1,144 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="demo" namespace="/demo" extends="struts-default">
+
+		<action name="input">
+			<result>pages/Login.jsp</result>
+		</action>
+
+		<action name="process" class="leaveApp.demo.LoginAction"
+			method="getDetails">
+			<result name="input">pages/Login.jsp</result>
+			<result name="Analyst">pages/EmployeeProfileLeaveQueue.jsp</result>
+			<result name="Manager">pages/ManagerProfile.jsp</result>
+			<result name="System Admin">pages/AdminProfile.jsp</result>
+			<result name="failure">pages/LoginFail.jsp</result>
+		</action>
+
+		<action name="changePassword">
+			<result>pages/ChangePassword.jsp</result>
+		</action>
+		<action name="PasswodToDB" class="leaveApp.demo.HomeAction"
+			method="changePasswd">
+			<result name="okay">pages/ChangePassword.jsp</result>
+		</action>
+
+		<action name="applyleave">
+			<result>pages/ApplyForLeave.jsp</result>
+		</action>
+		<action name="leavesubmit" class="leaveApp.demo.LeaveAction">
+			<result name="input">pages/ApplyForLeave.jsp</result>
+			<result name="fail">pages/ApplyLeaveAgain.jsp</result>
+			<result name="success">pages/LeaveRequestSent.jsp</result>
+		</action>
+
+		<action name="gotoHome" class="leaveApp.demo.HomeAction"
+			method="setPageAgain">
+			<result name="Analyst">pages/EmployeeProfileLeaveQueue.jsp</result>
+			<result name="Manager">pages/ManagerProfile.jsp</result>
+			<result name="System Admin">pages/AdminProfile.jsp</result>
+		</action>
+
+		<action name="leaveApproval" class="leaveApp.demo.HomeAction"
+			method="showLeaveQueue">
+			<result name="gotoSamePage">pages/LeaveApprovalForMember.jsp</result>
+		</action>
+
+		<action name="showLeaveOfTeamMembers" class="leaveApp.demo.HomeAction"
+			method="showLeaveQueue">
+			<result name="gotoSamePage">pages/LeaveApprovalForMember.jsp</result>
+		</action>
+
+		<action name="backToManager" class="leaveApp.demo.HomeAction"
+			method="setPageAgain">
+			<result name="Manager">pages/ManagerProfile.jsp</result>
+		</action>
+
+		<action name="ApplyOnBehalf" class="leaveApp.demo.HomeAction"
+			method="applyFor">
+			<result name="teammembers">pages/ApplyForMember.jsp</result>
+		</action>
+		<action name="applyFor" class="leaveApp.demo.HomeAction"
+			method="applyFor">
+			<result name="teammembers">pages/ApplyForTeamMemberLeave.jsp</result>
+		</action>
+
+		<action name="leavesubmitformember" class="leaveApp.demo.LeaveAction"
+			method="applyForMember">
+			<result name="teammemberselected">pages/LeaveRequestSent.jsp</result>
+		</action>
+		<action name="displayedbyname">
+			<result>pages/AdminProfile.jsp</result>
+		</action>
+
+
+		<action name="selfReport" class="leaveApp.demo.HomeAction"
+			method="generateReport">
+			<result name="report">pages/ShowReportManager.jsp</result>
+		</action>
+
+		<action name="EmpReportSelf" class="leaveApp.demo.HomeAction"
+			method="generateReport">
+			<result name="report">pages/ShowReportSelf.jsp</result>
+		</action>
+
+		<action name="backToEmployee" class="leaveApp.demo.HomeAction"
+			method="setPageAgain">
+			<result name="Analyst">pages/EmployeeProfileLeaveQueue.jsp</result>
+		</action>
+
+		<action name="createNewEmployee">
+			<result>pages/CreateNewEmployee.jsp</result>
+		</action>
+		<action name="createNow" class="leaveApp.demo.AdminAction"
+			method="addEmployee">
+			<result name="created" type="chain">setPageAgain</result>
+		</action>
+
+		<!-- <action name="cancelLeave" class="leaveApp.demo.LeaveAction" -->
+		<!-- method="leaveCancel"> -->
+		<!-- <result name="cancelled" type="chain">setPageAgain</result> -->
+		<!-- </action> -->
+
+
+
+		<action name="setPageAgain" class="leaveApp.demo.HomeAction"
+			method="setPageAgain">
+			<result name="System Admin">pages/AdminProfile.jsp</result>
+			<result name="Analyst">pages/EmployeeProfileLeaveQueue.jsp</result>
+		</action>
+
+		<action name="deleteEmployee">
+			<result>pages/deleteEmployee.jsp</result>
+		</action>
+		<action name="deleteNow" class="leaveApp.demo.AdminAction"
+			method="deleteEmployee">
+			<result name="deleted" type="chain">setPageAgain</result>
+		</action>
+
+		<action name="checkReport">
+			<result>pages/CheckReports.jsp</result>
+		</action>
+		<action name="ShowDetailsToAdmin" class="leaveApp.demo.AdminAction"
+			method="generateReports">
+			<result name="fromadmin">pages/ShowDetailsForTypeSelected.jsp</result>
+			<result name="noResultFound">pages/ShowNoDetailsFound.jsp</result>
+		</action>
+
+
+		<action name="leaveCancel" class="leaveApp.demo.AlternateLeaveAction"
+			method="leaveCancel">
+			<result name="cancelled" type="chain">setPageAgain</result>
+		</action>
+<!-- 		<action name="setPageAgain" class="leaveApp.demo.HomeAction" -->
+<!-- 			method="setPageAgain"> -->
+<!-- 			<result name="Analyst">pages/EmployeeProfileLeaveQueue.jsp</result> -->
+	
+<!-- </action> -->
+	</package>
+
+</struts>

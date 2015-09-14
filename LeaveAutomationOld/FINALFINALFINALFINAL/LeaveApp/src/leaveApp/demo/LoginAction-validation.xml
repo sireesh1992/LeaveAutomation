@@ -1,0 +1,32 @@
+<!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.3//EN"
+        "http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
+<validators>
+
+	<!-- This is how you perform validation using field validators -->
+
+	<field name="password">
+		<field-validator type="requiredstring">
+			<message key="Required" />
+		</field-validator>
+
+		<field-validator type="stringlength">
+			<param name="minLength">4</param>
+			<param name="maxLength">10</param>
+			<param name="trim">true</param>
+			<message key="Password must be between 4 to 10 characters long" />
+		</field-validator>
+	</field>
+
+	<field name="SOEID">
+		<field-validator type="requiredstring">
+			<message key="Required" />
+		</field-validator>
+		<field-validator type="regex">
+			<param name="regex">[A-Z]{2}[0-9]{5}</param>
+			<message key="SOEID should be 2 characters followed by 5 digit number" />
+		</field-validator>
+	</field>
+
+
+</validators>
+
